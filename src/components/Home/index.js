@@ -15,6 +15,7 @@ export default class _Home extends Component {
         "5b4696958c528d0003243111", // Home get started
         "5b46aa0c8c528d00032431b4", // Footer
         "5b477214ba8e5f0003457f7c", // Footer bottom
+        "5b4cdf1a55ad93000368c6dd"
       ],
     });
   }
