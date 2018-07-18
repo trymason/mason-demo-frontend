@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "mason-library": "^1.4.4",
+    "mason-library": "../library/",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-hyperscript": "^3.2.0",
+    "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4"
   },

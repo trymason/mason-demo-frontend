@@ -13,10 +13,10 @@ export default class Chat extends Component {
       h('.fixed.top-0.bg-white.w-100.overflow-scroll', { style: { minWidth: 400, bottom: 60, left: 219 }}, [
         h('.h-100.w-100', [
           h(Feed, {
-            id: "5b4d13c355ad93000368ca6d" // Chat
+            id: "5b4d13c355ad93000368ca6d", // Chat
+            willFetchData: (d) => ({...d,url: `http://mason-demo-be.herokuapp.com/channels/${this.props.channelId}/conversations`})
           })
         ])
-
       ]),
       h('.fixed.pa3.bottom-0.right-0.bg-white', { style: { left: 219 }}, [
         h(Canvas, {
