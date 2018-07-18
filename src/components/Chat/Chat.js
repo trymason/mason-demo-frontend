@@ -7,10 +7,10 @@ export default class Chat extends Component {
     return h('.flex', [
       h('.min-vh-100', { style: { backgroundColor: '#303E4D', width: 219, minWidth: 219 }}, [
         h(Feed, {
-          id: "5b479273ba8e5f000345810e" // Left sidebar
+          id: "5b4e968ecfef9400036264c0" // Left sidebar
         })
       ]),
-      h('.fixed.top-0.bottom-0.bg-white.w-100.h-100.overflow-scroll', { style: { minWidth: 400, marginBottom: 68, left: 219 }}, [
+      h('.fixed.top-0.bg-white.w-100.overflow-scroll', { style: { minWidth: 400, bottom: 60, left: 219 }}, [
         h('.h-100.w-100', [
           h(Feed, {
             id: "5b4d13c355ad93000368ca6d" // Chat
