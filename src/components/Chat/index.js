@@ -15,6 +15,7 @@ class _Chat extends Component {
         "5b4e968ecfef9400036264c0", // Left sidebar channel feed
         "5b4d13c355ad93000368ca6d", // Chat feed
         "5b4d5a8a55ad93000368cec5", // Create new message
+        "5b4fcdd583d8f80003d6f328", // Chat header
       ],
     });
   }
