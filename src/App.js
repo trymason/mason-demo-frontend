@@ -10,7 +10,7 @@ import h from 'react-hyperscript';
 import About from './components/About';
 import Chat from './components/Chat';
 import Home from './components/Home';
-import Plans from './components/Plans';
+import Pricing from './components/Pricing';
 import Whyslack from './components/Whyslack';
 
 
