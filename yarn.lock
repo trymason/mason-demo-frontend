@@ -1695,7 +1695,7 @@ component-inherit@0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/component-inherit/-/component-inherit-0.0.3.tgz#645fc4adf58b72b649d5cae65135619db26ff143"
 
-compressible@~2.0.13:
+compressible@~2.0.14:
   version "2.0.14"
   resolved "https://registry.yarnpkg.com/compressible/-/compressible-2.0.14.tgz#326c5f507fbb055f54116782b969a81b67a29da7"
   dependencies:
@@ -4679,32 +4679,6 @@ map-visit@^1.0.0:
   resolved "https://registry.yarnpkg.com/map-visit/-/map-visit-1.0.0.tgz#ecdca8f13144e660f1b5bd41f12f3479d98dfb8f"
   dependencies:
     object-visit "^1.0.0"
-
-mason-library@../library/:
-  version "1.5.0"
-  dependencies:
-    enzyme "^3.3.0"
-    enzyme-adapter-react-16 "^1.1.1"
-    enzyme-to-json "^3.3.3"
-    form-serialize "^0.7.2"
-    immutability-helper "^2.6.5"
-    lodash "^4.17.5"
-    moment "^2.20.1"
-    prop-types "^15.6.0"
-    react "^16.2.0"
-    react-async-script "^0.9.1"
-    react-dom "^16.2.0"
-    react-google-recaptcha "^0.11.0"
-    react-hyperscript "^3.1.0"
-    react-redux "^5.0.7"
-    react-test-renderer "^16.2.0"
-    react-visibility-sensor "^3.11.0"
-    redux "^3.7.2"
-    redux-actions "^2.2.1"
-    redux-logger "^3.0.6"
-    redux-mock-store "^1.5.3"
-    redux-test-utils "^0.2.2"
-    webfontloader "^1.6.28"
 
 mason-library@^1.5.0:
   version "1.5.0"

@@ -2,6 +2,7 @@ import { Component } from 'react';
 import h from 'react-hyperscript';
 import { Canvas, Feed } from 'mason-library';
 import _ from 'lodash';
+import moment from 'moment';
 
 export default class Chat extends Component {
   constructor(props) {
@@ -9,6 +10,7 @@ export default class Chat extends Component {
     this.state = {
       data: []
     }
+    this.scrollChatIntoView = this.scrollChatIntoView.bind(this)
   }
 
   componentDidMount() {
@@ -16,18 +18,26 @@ export default class Chat extends Component {
       this.setState(prevState => (
         { data: _.concat(prevState.data,
           {
-            channelId: "5b4d5767bf2a66001e7d194c",
-            createdAt: Date.now(),
+            channelId: this.props.channelId,
+            createdAt: moment(),
             message,
             userId: {
               _id: "5b4d5766bf2a66001e7d1937",
               name: 'tom mclaughlin',
               photoUrl: 'https://randomuser.me/api/portraits/men/4.jpg'
             },
-            _id: '1234'
           })
         }))
+       this.scrollChatIntoView()
     });
+  }
+
+  scrollChatIntoView() {
+    const chatItems = _.get(this.refs.chat, 'children[0].children[0].children', [])
+    if (!_.isEmpty(chatItems)){
+      const lastItem = chatItems[chatItems.length -1];
+      lastItem.scrollIntoView();
+    }
   }
 
   render() {
@@ -48,14 +58,20 @@ export default class Chat extends Component {
         ]),
       ]),
       h('.fixed.bg-white.w-100.overflow-scroll', { style: { minWidth: 400, bottom: 60, left: 219, top: 58 }}, [
-        h('.h-100.w-100', { id: channelId }, [
+        h('.h-100.w-100', { id: channelId, ref: 'chat' }, [
           h(Feed, {
             id: "5b4d13c355ad93000368ca6d", // Chat
             data: this.state.data,
             willFetchData: (d) => ({
               ...d,
               url: `http://mason-demo-be.herokuapp.com/channels/${channelId}/conversations`
-            })
+            }),
+            didFetchData: (d) => {
+              setTimeout(() => {
+                this.scrollChatIntoView();
+              }, 600)
+              return d
+            }
           })
         ])
       ]),

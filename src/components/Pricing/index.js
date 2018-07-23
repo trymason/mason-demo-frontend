@@ -2,7 +2,7 @@ import { Component } from 'react';
 import h from 'react-hyperscript';
 import Mason from 'mason-library';
 
-import Pricing from './Pricing';
+// import Pricing from './Pricing';
 
 export default class _Pricing extends Component {
   componentDidMount() {
@@ -13,11 +13,10 @@ export default class _Pricing extends Component {
         "5b4fc3ff83d8f80003d6f24c", // footer
         "5b4fc27283d8f80003d6f23f", // Body
         "5b5030ef83d8f80003d6f91e", // panel
-
       ],
     });
   }
   render() {
-    return h(Pricing)
+    return h('')
   }
 }
