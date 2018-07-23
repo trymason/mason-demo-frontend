@@ -1,3 +1,14 @@
+@font-face {
+  font-family: 'Proxima';
+  src: url('https://static.trymason.com/fonts/ProximaNova-Regular.eot');
+  src: url('https://static.trymason.com/fonts/ProximaNova-Regular.woff2') format('woff2'),
+       url('https://static.trymason.com/fonts/ProximaNova-Regular.woff') format('woff'),
+       url('https://static.trymason.com/fonts/ProximaNova-Regular.ttf') format('truetype'),
+       url('https://static.trymason.com/fonts/ProximaNova-Regular.svg#ProximaNova-Regular') format('svg'),
+       url('https://static.trymason.com/fonts/ProximaNova-Regular.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
 .mw-body {
   max-width: 1300px;
 }

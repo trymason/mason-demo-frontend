@@ -45,6 +45,10 @@ class App extends Component {
             component: Chat
           }),
           h(Route, {
+            path: '/chat/:id',
+            component: Chat
+          }),
+          h(Route, {
             render: () => h(Redirect, { to: '/' })
           })
         ])
