@@ -13,7 +13,7 @@ export default class _Pricing extends Component {
         "5b4fc3ff83d8f80003d6f24c", // footer
         "5b4fc27283d8f80003d6f23f", // Body
         "5b5030ef83d8f80003d6f91e", // panel
-
+        "5b56421265d1fd0003d97eb1", // logos
       ],
     });
   }
