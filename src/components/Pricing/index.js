@@ -2,9 +2,9 @@ import { Component } from 'react';
 import h from 'react-hyperscript';
 import Mason from 'mason-library';
 
-import Plans from './Plans';
+import Pricing from './Pricing';
 
-export default class _Plans extends Component {
+export default class _Pricing extends Component {
   componentDidMount() {
     Mason({
       apiKey: "lF468QYy/S+M2LpKKIfxGsRqC18xARiJtoLXCAJ2Mhw=",
@@ -18,6 +18,6 @@ export default class _Plans extends Component {
     });
   }
   render() {
-    return h(Plans)
+    return h(Pricing)
   }
 }

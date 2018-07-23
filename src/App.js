@@ -11,7 +11,7 @@ import About from './components/About';
 import Chat from './components/Chat';
 import Home from './components/Home';
 import Pricing from './components/Pricing';
-import Whyslack from './components/Whyslack';
+import WhySlack from './components/WhySlack';
 
 
 class App extends Component {
@@ -27,7 +27,7 @@ class App extends Component {
           h(Route, {
             exact: true,
             path: '/features',
-            component: Whyslack
+            component: WhySlack
           }),
           h(Route, {
             exact: true,
