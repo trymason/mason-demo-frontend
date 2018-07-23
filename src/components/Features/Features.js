@@ -4,7 +4,7 @@ import { Canvas } from 'mason-library';
 import { Page } from 'mason-library';
 
 
-export default class WhySlack extends Component {
+export default class Features extends Component {
   render() {
     return h('', [
       h('.bg-white.ph3.ph4-ns.bb.b--moon-gray', [
