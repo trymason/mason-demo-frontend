@@ -54,7 +54,7 @@ export default class Chat extends Component {
           h(Canvas, {
             id: '5b4fcdd583d8f80003d6f328',
             children: h('.f6.b.dark-gray.tl.pt2', { style: { fontFamily: 'Proxima' }}, ['#channel'])
-          }) //Chat header
+          }), //Chat header
         ]),
       ]),
       h('.fixed.bg-white.w-100.overflow-scroll', { style: { minWidth: 400, bottom: 60, left: 219, top: 58 }}, [
