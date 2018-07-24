@@ -8,6 +8,8 @@ import {
 import h from 'react-hyperscript';
 
 import About from './components/About';
+import Login from './components/Login';
+// import Register from './components/Register';
 import Chat from './components/Chat';
 import Home from './components/Home';
 import Pricing from './components/Pricing';
@@ -48,6 +50,14 @@ class App extends Component {
             path: '/chat/:id',
             component: Chat
           }),
+          h(Route, {
+            path: '/signin',
+            component: Login
+          }),
+          // h(Route, {
+          //   path: '/signup',
+          //   component: Register
+          // }),
           h(Route, {
             render: () => h(Redirect, { to: '/' })
           })
