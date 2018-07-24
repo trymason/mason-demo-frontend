@@ -15,7 +15,8 @@ export default class Chat extends Component {
 
   componentDidMount() {
     this.props.socket.on('new chat message', (msg) => {
-      this.setState(prevState => (
+      if (msg.channelId === this.props.channelId) {
+        this.setState(prevState => (
         { data: _.concat(prevState.data,
           {
             channelId: msg.channelId,
@@ -28,7 +29,8 @@ export default class Chat extends Component {
             },
           })
         }))
-       this.scrollChatIntoView()
+        this.scrollChatIntoView()
+      }
     });
   }
 
@@ -41,7 +43,6 @@ export default class Chat extends Component {
   }
 
   render() {
-    console.log('this.props.user', this.props.user)
     const { channelId, socket, user } = this.props;
 
     return h('.flex', [
