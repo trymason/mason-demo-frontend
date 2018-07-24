@@ -15,6 +15,7 @@ import Login from './components/Login';
 import Logout from './components/Logout';
 import Register from './components/Register';
 import Chat from './components/Chat';
+import Channels from './components/Channels';
 import Home from './components/Home';
 import Pricing from './components/Pricing';
 import Features from './components/Features';
@@ -53,6 +54,12 @@ class App extends Component {
             exact: true,
             path: '/about',
             component: About
+          }),
+          h(PrivateRoute, {
+            auth: this.checkIsAuthenticated(),
+            exact: true,
+            path: '/channels/new',
+            component: Channels
           }),
           h(PrivateRoute, {
             auth: this.checkIsAuthenticated(),
