@@ -22,9 +22,9 @@ export default class Chat extends Component {
             createdAt: moment(),
             message,
             userId: {
-              _id: "5b4d5766bf2a66001e7d1937",
-              name: 'tom mclaughlin',
-              photoUrl: 'https://randomuser.me/api/portraits/men/4.jpg'
+              _id: this.props.user.id,
+              name: this.props.user.name,
+              photoUrl: this.props.user.photoUrl || 'https://github.com/identicons/tim5046.png'
             },
           })
         }))
@@ -41,7 +41,8 @@ export default class Chat extends Component {
   }
 
   render() {
-    const { socket, channelId } = this.props;
+    console.log('this.props.user', this.props.user)
+    const { channelId, socket, user } = this.props;
 
     return h('.flex', [
       h('.min-vh-100', { style: { backgroundColor: '#303E4D', width: 219, minWidth: 219 }}, [
@@ -80,7 +81,11 @@ export default class Chat extends Component {
           id: '5b4d5a8a55ad93000368cec5', // Create new message
           willSendData: (d) => {
             socket.emit('new chat message', d.message)
-            return d
+            return {
+              message: d.message,
+              channelId,
+              userId: this.props.user.id,
+            }
           }
         })
       ])
