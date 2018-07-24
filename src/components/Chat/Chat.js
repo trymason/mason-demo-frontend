@@ -44,7 +44,7 @@ export default class Chat extends Component {
 
   render() {
     const { channelId, socket, user } = this.props;
-
+    console.log('channel id', channelId)
     return h('.flex', [
       h('.min-vh-100', { style: { backgroundColor: '#303E4D', width: 219, minWidth: 219 }}, [
         h(Feed, {
