@@ -14,17 +14,17 @@ export default class Chat extends Component {
   }
 
   componentDidMount() {
-    this.props.socket.on('new chat message', (message) => {
+    this.props.socket.on('new chat message', (msg) => {
       this.setState(prevState => (
         { data: _.concat(prevState.data,
           {
-            channelId: this.props.channelId,
+            channelId: msg.channelId,
             createdAt: moment(),
-            message,
+            message: msg.message,
             userId: {
-              _id: this.props.user.id,
-              name: this.props.user.name,
-              photoUrl: this.props.user.photoUrl || 'https://github.com/identicons/tim5046.png'
+              _id: msg.userId,
+              name: msg.name,
+              photoUrl: msg.photoUrl || 'https://github.com/identicons/tim5046.png'
             },
           })
         }))
@@ -80,12 +80,15 @@ export default class Chat extends Component {
         h(Canvas, {
           id: '5b4d5a8a55ad93000368cec5', // Create new message
           willSendData: (d) => {
-            socket.emit('new chat message', d.message)
-            return {
+            const hydratedData = {
               message: d.message,
+              name: this.props.user.name,
+              photoUrl: this.props.user.photoUrl,
               channelId,
               userId: this.props.user.id,
             }
+            socket.emit('new chat message', hydratedData)
+            return hydratedData
           }
         })
       ])
