@@ -2,6 +2,7 @@ import { Component } from 'react';
 import h from 'react-hyperscript';
 import { Canvas, Feed } from 'mason-library';
 import _ from 'lodash';
+import moment from 'moment';
 
 export default class Chat extends Component {
   constructor(props) {
@@ -9,29 +10,40 @@ export default class Chat extends Component {
     this.state = {
       data: []
     }
+    this.scrollChatIntoView = this.scrollChatIntoView.bind(this)
   }
 
   componentDidMount() {
-    this.props.socket.on('new chat message', (message) => {
-      this.setState(prevState => (
+    this.props.socket.on('new chat message', (msg) => {
+      if (msg.channelId === this.props.channelId) {
+        this.setState(prevState => (
         { data: _.concat(prevState.data,
           {
-            channelId: "5b4d5767bf2a66001e7d194c",
-            createdAt: Date.now(),
-            message,
+            channelId: msg.channelId,
+            createdAt: moment(),
+            message: msg.message,
             userId: {
-              _id: "5b4d5766bf2a66001e7d1937",
-              name: 'tom mclaughlin',
-              photoUrl: 'https://randomuser.me/api/portraits/men/4.jpg'
+              _id: msg.userId,
+              name: msg.name,
+              photoUrl: msg.photoUrl || 'https://github.com/identicons/tim5046.png'
             },
-            _id: '1234'
           })
         }))
+        this.scrollChatIntoView()
+      }
     });
   }
 
+  scrollChatIntoView() {
+    const chatItems = _.get(this.refs.chat, 'children[0].children[0].children', [])
+    if (!_.isEmpty(chatItems)){
+      const lastItem = chatItems[chatItems.length -1];
+      lastItem.scrollIntoView();
+    }
+  }
+
   render() {
-    const { socket, channelId } = this.props;
+    const { channelId, socket, user } = this.props;
 
     return h('.flex', [
       h('.min-vh-100', { style: { backgroundColor: '#303E4D', width: 219, minWidth: 219 }}, [
@@ -44,18 +56,24 @@ export default class Chat extends Component {
           h(Canvas, {
             id: '5b4fcdd583d8f80003d6f328',
             children: h('.f6.b.dark-gray.tl.pt2', { style: { fontFamily: 'Proxima' }}, ['#channel'])
-          }) //Chat header
+          }), //Chat header
         ]),
       ]),
       h('.fixed.bg-white.w-100.overflow-scroll', { style: { minWidth: 400, bottom: 60, left: 219, top: 58 }}, [
-        h('.h-100.w-100', { id: channelId }, [
+        h('.h-100.w-100', { id: channelId, ref: 'chat' }, [
           h(Feed, {
             id: "5b4d13c355ad93000368ca6d", // Chat
             data: this.state.data,
             willFetchData: (d) => ({
               ...d,
               url: `http://mason-demo-be.herokuapp.com/channels/${channelId}/conversations`
-            })
+            }),
+            didFetchData: (d) => {
+              setTimeout(() => {
+                this.scrollChatIntoView();
+              }, 600)
+              return d
+            }
           })
         ])
       ]),
@@ -63,8 +81,15 @@ export default class Chat extends Component {
         h(Canvas, {
           id: '5b4d5a8a55ad93000368cec5', // Create new message
           willSendData: (d) => {
-            socket.emit('new chat message', d.message)
-            return d
+            const hydratedData = {
+              message: d.message,
+              name: this.props.user.name,
+              photoUrl: this.props.user.photoUrl,
+              channelId,
+              userId: this.props.user.id,
+            }
+            socket.emit('new chat message', hydratedData)
+            return hydratedData
           }
         })
       ])

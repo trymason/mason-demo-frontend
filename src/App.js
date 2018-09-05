@@ -6,15 +6,31 @@ import {
   Route,
 } from 'react-router-dom';
 import h from 'react-hyperscript';
+import _ from 'lodash';
+
+import PrivateRoute from './utils/PrivateRoute';
 
 import About from './components/About';
+import Login from './components/Login';
+import Logout from './components/Logout';
+import Register from './components/Register';
 import Chat from './components/Chat';
+import Channels from './components/Channels';
 import Home from './components/Home';
 import Pricing from './components/Pricing';
-import WhySlack from './components/WhySlack';
+import Features from './components/Features';
 
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.checkIsAuthenticated = this.checkIsAuthenticated.bind(this)
+  }
+
+  checkIsAuthenticated() {
+    return !!localStorage.getItem('mason_slack.user')
+  }
+
   render() {
     return h('.min-vh-100.bg-white', [
       h(Router, [
@@ -27,7 +43,7 @@ class App extends Component {
           h(Route, {
             exact: true,
             path: '/features',
-            component: WhySlack
+            component: Features
           }),
           h(Route, {
             exact: true,
@@ -39,7 +55,14 @@ class App extends Component {
             path: '/about',
             component: About
           }),
-          h(Route, {
+          h(PrivateRoute, {
+            auth: this.checkIsAuthenticated(),
+            exact: true,
+            path: '/channels/new',
+            component: Channels
+          }),
+          h(PrivateRoute, {
+            auth: this.checkIsAuthenticated(),
             exact: true,
             path: '/chat',
             component: Chat
@@ -47,6 +70,30 @@ class App extends Component {
           h(Route, {
             path: '/chat/:id',
             component: Chat
+          }),
+          h(Route, {
+            path: '/signin',
+            render: () => {
+              if (this.checkIsAuthenticated()) {
+                return h(Redirect, { to: '/chat' })
+              }
+              return h(Login)
+            }
+          }),
+          h(Route, {
+            path: '/signup',
+            render: () => {
+              if (this.checkIsAuthenticated()) {
+                return h(Redirect, { to: '/chat' })
+              }
+              return h(Register)
+            }
+          }),
+          h(PrivateRoute, {
+            auth: this.checkIsAuthenticated(),
+            exact: true,
+            path: '/logout',
+            component: Logout
           }),
           h(Route, {
             render: () => h(Redirect, { to: '/' })

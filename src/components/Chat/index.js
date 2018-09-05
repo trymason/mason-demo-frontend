@@ -12,6 +12,11 @@ class _Chat extends Component {
   constructor(props){
     super(props)
     this.socket = openSocket(config.apiURL);
+    this.getCurrentUser = this.getCurrentUser.bind(this);
+  }
+
+  getCurrentUser() {
+    return JSON.parse(localStorage.getItem('mason_slack.user'))
   }
 
   componentDidMount() {
@@ -30,6 +35,7 @@ class _Chat extends Component {
     return h(Chat, {
       channelId,
       socket: this.socket,
+      user: this.getCurrentUser(),
     })
   }
 }

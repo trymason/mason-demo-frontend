@@ -2,9 +2,9 @@ import { Component } from 'react';
 import h from 'react-hyperscript';
 import Mason from 'mason-library';
 
-import WhySlack from './WhySlack';
+import Features from './Features';
 
-export default class _WhySlack extends Component {
+export default class _Features extends Component {
   componentDidMount() {
     Mason({
       apiKey: "lF468QYy/S+M2LpKKIfxGsRqC18xARiJtoLXCAJ2Mhw=",
@@ -20,6 +20,6 @@ export default class _WhySlack extends Component {
     });
   }
   render() {
-    return h(WhySlack)
+    return h(Features)
   }
 }
