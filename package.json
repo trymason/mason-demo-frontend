@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "mason-library": "^1.5.1",
+    "mason-library": "git+https://0862de1dc3eb3009d2e17b1f86483a60442612b2:x-oauth-basic@github.com/trymason/library.git#1.6.2-alpha",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-hyperscript": "^3.2.0",
