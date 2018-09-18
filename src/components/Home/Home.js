@@ -15,13 +15,19 @@ export default class Home extends Component {
           h(Canvas, { id: "5b467d5b8c528d0003242f90"}), // Home hero
         ])
       ]),
-      h('.ph3.ph4-ns', { style: { background: "#F5F5F5" }}, [
+      h('.ph3.ph4-ns', { style: { background: "#FFFFFF" }}, [
         h('.mw-body.center', [
           h(Canvas, { id: "5b468ddd8c528d00032430be" }) // Home logos
         ])
       ]),
+      h('.ph3.ph4-ns', [
+        h(Canvas, { id: "5b906f5d8d4a9600035bfeac" }) // the hub for your team
+      ]),
+      h('.ph3.ph4-ns', [
+        h(Canvas, { id: "5b90821e8d4a9600035c0069" }) // the hub for your team
+      ]),
       h('.bg-transparent', [
-        h('', [
+        h('mw-body.center', [
           h(Canvas, { id: "5b4696958c528d0003243111" }) // Home get started
         ])
       ]),

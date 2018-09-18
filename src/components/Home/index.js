@@ -12,9 +12,11 @@ export default class _Home extends Component {
         "5b4674dc8c528d0003242f01", // Navbar
         "5b467d5b8c528d0003242f90", // Home Hero
         "5b468ddd8c528d00032430be", // Home logos
+        "5b906f5d8d4a9600035bfeac", // The hub for your team
         "5b4696958c528d0003243111", // Home get started
         "5b46aa0c8c528d00032431b4", // Footer
         "5b477214ba8e5f0003457f7c", // Footer bottom
+        "5b90821e8d4a9600035c0069", // built for every team
         "5b4cdf1a55ad93000368c6dd"
       ],
     });
