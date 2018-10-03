@@ -12,7 +12,7 @@ export default class _Register extends Component {
 
   handleRegister({ user }) {
     localStorage.setItem('mason_slack.user', JSON.stringify(user));
-    window.location.href = '/chat';
+    window.location.href = '/chat/5b5730e17ce495001ed52d45';
   }
 
   componentDidMount() {
