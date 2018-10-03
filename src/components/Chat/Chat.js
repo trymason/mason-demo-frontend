@@ -48,7 +48,7 @@ export default class Chat extends Component {
     return h('.flex', [
       h('.min-vh-100', { style: { backgroundColor: '#303E4D', width: 219, minWidth: 219 }}, [
         h(Feed, {
-          id: "5b4e968ecfef9400036264c0" // Left sidebar
+          id: "5babf2a0dd3fc6000395eb59" // Left sidebar
         })
       ]),
       h('.absolute.top-0.right-0.bb.b--moon-gray.z-1', { style: { left: 219, width: 'calc(vw - 219px)'}}, [
