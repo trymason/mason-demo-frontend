@@ -88,6 +88,7 @@ export default class Chat extends Component {
               channelId,
               userId: this.props.user.id,
             }
+            console.log('hydratedData', hydratedData)
             socket.emit('new chat message', hydratedData)
             return hydratedData
           }
