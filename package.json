@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "mason-library": "^1.6.2",
+    "mason-library": "^1.6.4",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-hyperscript": "^3.2.0",
