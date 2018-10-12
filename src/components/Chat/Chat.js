@@ -44,7 +44,7 @@ export default class Chat extends Component {
 
   render() {
     const { channelId, socket, user } = this.props;
-    console.log('PROPS!', props)
+    console.log('PROPS!', this.props)
 
     return h('.flex', [
       h('.min-vh-100', { style: { backgroundColor: '#303E4D', width: 219, minWidth: 219 }}, [
@@ -83,13 +83,12 @@ export default class Chat extends Component {
           id: '5b4d5a8a55ad93000368cec5', // Create new message
           willSendData: (d) => {
             const hydratedData = {
-              message: d.message,
+              message: d.data.message,
               name: this.props.user.name,
               photoUrl: this.props.user.photoUrl,
               channelId,
               userId: this.props.user.id,
             }
-            console.log('hydratedData', hydratedData)
             socket.emit('new chat message', hydratedData)
             return hydratedData
           }
