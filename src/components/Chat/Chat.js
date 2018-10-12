@@ -90,7 +90,10 @@ export default class Chat extends Component {
               userId: this.props.user.id,
             }
             socket.emit('new chat message', hydratedData)
-            return hydratedData
+            return {
+              ...d,
+              data: hydratedData
+            }
           }
         })
       ])
